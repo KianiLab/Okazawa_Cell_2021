@@ -56,12 +56,6 @@ PSTH = S.PSTH;
 Tstamp = S.Tstamp;
 coherence = mean(S.coherence,1)/1e2;
 
-% mean imputation to nan
-if sum(isnan(PSTH(:)))>0
-    fill_val = bsxfun(@times, isnan(PSTH), nanmean(PSTH(:,:),2));
-    PSTH(isnan(PSTH(:))) = fill_val(isnan(PSTH(:)));
-end
-
 % detrend
 PSTH = bsxfun(@minus, PSTH, nanmean(PSTH,3));
 
@@ -118,12 +112,6 @@ S = load('Motion_cor.mat');
 PSTH = S.PSTH;
 Tstamp = S.Tstamp;
 coherence = mean(S.coherence,1)/1e2;
-
-% mean imputation to nan
-if sum(isnan(PSTH(:)))>0
-    fill_val = bsxfun(@times, isnan(PSTH), nanmean(PSTH(:,:),2));
-    PSTH(isnan(PSTH(:))) = fill_val(isnan(PSTH(:)));
-end
 
 % detrend
 PSTH = bsxfun(@minus, PSTH, nanmean(PSTH,3));
