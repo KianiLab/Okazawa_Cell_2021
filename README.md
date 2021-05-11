@@ -22,15 +22,15 @@ Both dataset contains followings:
 * PSTH (unit x time x stimulus condition): trial-averaged PSTHs for correct trials. Aligned to stimulus onset and smoothed with 100 ms boxcar function.
 * Tstamp (1 x time): time stamp of PSTHs (ms)
 * coherence (unit x stimulus condition): average stimulus strength (%) in each stimulus condition for each unit
-
+* PSTH_detrended (unit x time x stimulus condition): condition-independent time course of PSTHs is subtracted for each unit. Used for performing PCA.
 
 ## Test code
 
-[Okazawa2021.m](./Okazawa2021.m): Generate population average PSTHs (Fig. 2A-B) and PCA plot (Fig. 2E-F).
+[Okazawa2021.m](./Okazawa2021.m): Generate population average PSTHs (Fig. 2A-B) and PCA plot (Fig. 2E-F; without bootstrap procedure for estimation of SE).
 
 ## Contact
 
-For questions and further inquiry about the dataset and code, please contact the first or lead author (okazawa@nyu.edu, roozbeh@nyu.edu).
+For questions or further inquiry about the dataset and code, please contact the first or lead author (okazawa@nyu.edu, roozbeh@nyu.edu).
 
 ## License
 
