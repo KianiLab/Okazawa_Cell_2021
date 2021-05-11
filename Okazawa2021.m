@@ -55,16 +55,18 @@ S = load('Face_cor.mat');
 PSTH = S.PSTH_detrended;
 Tstamp = S.Tstamp;
 coherence = mean(S.coherence,1)/1e2;
+half_cutoff = S.half_cutoff;
 
 % PC range
-ind = Tstamp >= PCrange(1) & Tstamp <= PCrange(2);
+ind = Tstamp >= PCrange(1) & Tstamp <= PCrange(2) & Tstamp >= half_cutoff(1) & Tstamp <= half_cutoff(2);
 pcPSTH = PSTH(:, ind, :);
 
 % run PCA
-coef = pca(pcPSTH(:,:)');
+MU = mean(pcPSTH(:,:),2)';
+coef = pca(bsxfun(@minus, pcPSTH(:,:)', MU));
 
 ind = Time == Tstamp;
-PCscore = permute(PSTH(:,ind,:), [1 3 2])' * coef(:,1:3);
+PCscore = bsxfun(@minus, permute(PSTH(:,ind,:), [1 3 2])', MU) * coef(:,1:3);
 PCscore = PCscore .* (ones(size(PCscore,1),1) * dim_sign);
 
 % curve fit
@@ -109,16 +111,18 @@ S = load('Motion_cor.mat');
 PSTH = S.PSTH_detrended;
 Tstamp = S.Tstamp;
 coherence = mean(S.coherence,1)/1e2;
+half_cutoff = S.half_cutoff;
 
 % PC range
-ind = Tstamp >= PCrange(1) & Tstamp <= PCrange(2);
+ind = Tstamp >= PCrange(1) & Tstamp <= PCrange(2) & Tstamp >= half_cutoff(1) & Tstamp <= half_cutoff(2);
 pcPSTH = PSTH(:, ind, :);
 
 % run PCA
-coef = pca(pcPSTH(:,:)');
+MU = mean(pcPSTH(:,:),2)';
+coef = pca(bsxfun(@minus, pcPSTH(:,:)', MU));
 
 ind = Time == Tstamp;
-PCscore = permute(PSTH(:,ind,:), [1 3 2])' * coef(:,1:3);
+PCscore = bsxfun(@minus, permute(PSTH(:,ind,:), [1 3 2])', MU) * coef(:,1:3);
 PCscore = PCscore .* (ones(size(PCscore,1),1) * dim_sign);
 
 % curve fit
