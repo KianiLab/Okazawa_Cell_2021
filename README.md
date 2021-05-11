@@ -23,6 +23,7 @@ Both dataset contains followings:
 * Tstamp (1 x time): time stamp of PSTHs (ms)
 * coherence (unit x stimulus condition): average stimulus strength (%) in each stimulus condition for each unit
 * PSTH_detrended (unit x time x stimulus condition): condition-independent time course of PSTHs is subtracted for each unit. Used for performing PCA.
+* half_cutoff: cutoff timing (ms) outside which 50% of trials contribute.
 
 ## Test code
 
