@@ -22,7 +22,7 @@ Both dataset contains followings:
 * PSTH (unit x time x stimulus condition): trial-averaged PSTHs for correct trials. Aligned to stimulus onset and smoothed with 100 ms boxcar function.
 * Tstamp (1 x time): time stamp of PSTHs (ms)
 * coherence (unit x stimulus condition): average stimulus strength (%) in each stimulus condition for each unit
-
+* PSTH_detrended (unit x time x stimulus condition): condition-independent time course of PSTHs is subtracted for each unit. Used for performing PCA.
 
 ## Test code
 
