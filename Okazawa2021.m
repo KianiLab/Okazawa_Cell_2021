@@ -52,12 +52,9 @@ dim = [3 1 2];
 
 S = load('Face_cor.mat');
 
-PSTH = S.PSTH;
+PSTH = S.PSTH_detrended;
 Tstamp = S.Tstamp;
 coherence = mean(S.coherence,1)/1e2;
-
-% detrend
-PSTH = bsxfun(@minus, PSTH, nanmean(PSTH,3));
 
 % PC range
 ind = Tstamp >= PCrange(1) & Tstamp <= PCrange(2);
@@ -87,7 +84,7 @@ figure('color', 'w', 'position', [500 100 200 200], 'paperpositionmode', 'auto')
 hold on;
 plot3(pt(:,dim(1)), pt(:,dim(2)), pt(:,dim(3)), 'col', [.5 .5 .5], 'linew', 2);
 for n=1:size(PCscore,1)
-    plot3(PCscore(n,dim(1)), PCscore(n,dim(2)), PCscore(n,dim(3)), 'o', 'markeredgecol', col(n,:), 'markerfacecol', col(n,:), 'markers', 12);
+    plot3(PCscore(n,dim(1)), PCscore(n,dim(2)), PCscore(n,dim(3)), 'o', 'markeredgecol', col(n,:), 'markerfacecol', col(n,:), 'markers', 10);
 end
 axis square;
 xlabel(sprintf('PC %d', dim(1)));
@@ -109,12 +106,9 @@ dim = [3 1 2];
 
 S = load('Motion_cor.mat');
 
-PSTH = S.PSTH;
+PSTH = S.PSTH_detrended;
 Tstamp = S.Tstamp;
 coherence = mean(S.coherence,1)/1e2;
-
-% detrend
-PSTH = bsxfun(@minus, PSTH, nanmean(PSTH,3));
 
 % PC range
 ind = Tstamp >= PCrange(1) & Tstamp <= PCrange(2);
@@ -144,7 +138,7 @@ figure('color', 'w', 'position', [700 100 200 200], 'paperpositionmode', 'auto')
 hold on;
 plot3(pt(:,dim(1)), pt(:,dim(2)), pt(:,dim(3)), 'col', [.5 .5 .5], 'linew', 2);
 for n=1:size(PCscore,1)
-    plot3(PCscore(n,dim(1)), PCscore(n,dim(2)), PCscore(n,dim(3)), 'o', 'markeredgecol', col(n,:), 'markerfacecol', col(n,:), 'markers', 12);
+    plot3(PCscore(n,dim(1)), PCscore(n,dim(2)), PCscore(n,dim(3)), 'o', 'markeredgecol', col(n,:), 'markerfacecol', col(n,:), 'markers', 10);
 end
 axis square;
 xlabel(sprintf('PC %d', dim(1)));
@@ -153,4 +147,4 @@ zlabel(sprintf('PC %d', dim(3)));
 xlim([-44 28]);
 ylim([-131 114]);
 zlim([-38 30]);
-view([-99 -16]);
+view([-100 -20]);

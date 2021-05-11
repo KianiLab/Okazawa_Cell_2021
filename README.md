@@ -26,11 +26,11 @@ Both dataset contains followings:
 
 ## Test code
 
-[Okazawa2021.m](./Okazawa2021.m): Generate population average PSTHs (Fig. 2A-B) and PCA plot (Fig. 2E-F).
+[Okazawa2021.m](./Okazawa2021.m): Generate population average PSTHs (Fig. 2A-B) and PCA plot (Fig. 2E-F; without bootstrap procedure for estimation of SE).
 
 ## Contact
 
-For questions and further inquiry about the dataset and code, please contact the first or lead author (okazawa@nyu.edu, roozbeh@nyu.edu).
+For questions or further inquiry about the dataset and code, please contact the first or lead author (okazawa@nyu.edu, roozbeh@nyu.edu).
 
 ## License
 
