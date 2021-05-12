@@ -67,7 +67,7 @@ coef = pca(bsxfun(@minus, pcPSTH(:,:)', MU));
 
 ind = Time == Tstamp;
 PCscore = bsxfun(@minus, permute(PSTH(:,ind,:), [1 3 2])', MU) * coef(:,1:3);
-PCscore = PCscore .* (ones(size(PCscore,1),1) * dim_sign);
+PCscore = bsxfun(@times, PCscore, dim_sign);
 
 % curve fit
 cx = linspace(min(coherence), max(coherence), 100);
@@ -123,7 +123,7 @@ coef = pca(bsxfun(@minus, pcPSTH(:,:)', MU));
 
 ind = Time == Tstamp;
 PCscore = bsxfun(@minus, permute(PSTH(:,ind,:), [1 3 2])', MU) * coef(:,1:3);
-PCscore = PCscore .* (ones(size(PCscore,1),1) * dim_sign);
+PCscore = bsxfun(@times, PCscore, dim_sign);
 
 % curve fit
 cx = linspace(min(coherence), max(coherence), 100);
